@@ -1,0 +1,63 @@
+GET http://localhost:3000/techs
+###
+
+PATCH http://localhost:3000/techs/5fe00e9b1f5d74546044eb61
+Content-Type: application/json
+
+{
+"nom": "rona",
+"listeClients" :[ {
+                  "clientID" : 3,
+                  "nomClient" : "kiki",
+                  "prenom" : "koko",
+                  "adresse" : "koko",
+                  "dateDebutIntervention" : "12-12-2020",
+                  "dateFinIntervention" : "13-12-2020"
+                  }
+
+]
+}
+###
+Get http://localhost:3000/techs/5fdebbe74a313b1c80e5631f
+###
+DELETE  http://localhost:3000/techs/5fdebbe74a313b1c80e5631f
+###
+POST http://localhost:3000/techs
+Content-Type: application/json
+
+{
+  
+"nom": "ronaldo",
+"techID":123 ,
+"listeClients" : [ { "clientID" :1,
+                   "nomClient" :"cccdddddddddddddcc",
+                  "prenom" :"bfdjbgdjb",
+                  "adresse" :"jfdsjfdhj",
+                  "dateDebutIntervention" :"12-12-2020",
+                  "dateFinIntervention" :"13-12-2020" 
+                   
+
+},{ "clientID" :2,
+"nomClient" :"djfsgjdg" ,
+"prenom" :"bfdjbgdjb",
+"adresse" :"jfdsjfdhj",
+"dateDebutIntervention" :"12-12-2020",
+"dateFinIntervention" :"13-12-2020" }
+ ]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
