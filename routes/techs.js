@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     const collection =  await  Tech.find()
     // perform actions on the collection object
      console.log(collection)
-      
+     res.json(collection)
     
     })      
 

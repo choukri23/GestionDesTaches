@@ -1,6 +1,20 @@
 GET http://localhost:3000/techs
 ###
+PATCH http://localhost:3000/techsRoutes/fdkjhf
+Content-Type: application/json
 
+{
+"nom" : "kiki",
+"techIDRoutes" : "123", 
+"clientID" : "123",
+"tempsPasseChezClient" : 2
+}
+
+
+
+
+
+###
 PATCH http://localhost:3000/techs/5fe00e9b1f5d74546044eb61
 Content-Type: application/json
 
@@ -18,9 +32,20 @@ Content-Type: application/json
 ]
 }
 ###
-Get http://localhost:3000/techs/5fdebbe74a313b1c80e5631f
+Get http://localhost:3000/techs/5fe00e9b1f5d74546044eb61
 ###
 DELETE  http://localhost:3000/techs/5fdebbe74a313b1c80e5631f
+###
+POST http://localhost:3000/techsRoutes/
+Content-Type: application/json
+
+{
+ "_id" : 1,
+"nom" : "fdkjhf",
+"techIDRoutes" : "123", 
+"clientID" : "123",
+"tempsPasseChezClient" : 2
+}
 ###
 POST http://localhost:3000/techs
 Content-Type: application/json

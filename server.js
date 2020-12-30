@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require('express')
 const app = express()
+
 const mongoose = require('mongoose')
 
 
@@ -13,8 +14,17 @@ db.once('open', () => console.log('connected to database'))
 
 app.use(express.json())
 
+
+
+
+
 const techsRouter = require('./routes/techs')
 app.use('/techs', techsRouter)
+
+
+const techsRouteRouter = require('./routes/techsRoutes')
+app.use('/techsRoutes', techsRouteRouter)
+
 
 app.listen(3000, () => console.log('server started'))
 
