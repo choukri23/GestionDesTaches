@@ -1,4 +1,8 @@
+const { response } = require('express');
 const express = require('express')
+const url = require('url');
+
+const app = express();
 
 const router = express.Router()
 
@@ -7,47 +11,52 @@ const TechRoutes =require('../models/TechsRoutes')
 // Create one techRoutes
 router.post('/', async (req, res) => {
     const techRoute = new TechRoutes({
-    nom: req.body.nom,
-    techIDRoutes: req.body.techIDRoutes,
-    clientID :req.body.clientID,
-    tempsPasseChezClient :req.body.tempsPasseChezClient
+    nom : req.body.nom,
+    listeClients : req.body.listeClients
+     
+    //clientID :req.body.clientID,
+    //tempsPasseChezClient :req.body.tempsPasseChezClient
     
  });
- try {
-    const newTechRoutes = await techRoute.save()
-    res.status(201).json(newTechRoutes)
+ var str;
+ var a;
+ try { 
+    const newTechRoutes = await techRoute.save(function(err,room) {
+         a = room._id ;
+   res.json(JSON.parse ('{"a" : "'+a+'"}'))
+
+     })
+   // res.status(201).json(newTechRoutes)
+     // res.json( JSON.parse ('{"a" : "'+a+'"}'))
+   // console.log("------"+  newTechRoutes)
     } catch (err) {
     res.status(400).json({ message: err.message })
     }
+
+
     })
 
-
+ 
     
 
 router.patch('/:id', getTechRoutes, async (req, res) => {
-          
-      
-        if (req.body.nom != null) {
-        res.techRoutes.nom = req.body.nom
-        }
-    
-        if (req.body.techIDRoutes != null) {
-            res.techRoutes.techIDRoutes = req.body.techIDRoutes
-            }
-        if (req.body.clientID != null) {
+                 
+        var tab = res.techRoutes.listeClients
             
-            res.techRoutes.clientID = req.body.clientID 
-               
-           
-         }
+         var listeCl = req.body.listeClients
+         
+                  
 
-         if (req.body.tempsPasseChezClient != null) {
-    
-            res.techRoutes.tempsPasseChezClient = req.body.tempsPasseChezClient 
-               
-           
-         }
-       
+            var t=[]
+            
+              t= t.concat(tab)
+              t= t.concat(listeCl)
+
+              
+              res.techRoutes.listeClients = t
+              
+                                                                              
+         
 
         try {
            
@@ -67,6 +76,7 @@ router.patch('/:id', getTechRoutes, async (req, res) => {
     async function getTechRoutes(req, res, next) {
         try {
         techRoutes = await TechRoutes.findById(req.params.id)
+        
         if (techRoutes == null) {
         return res.status(404).json({ message: 'Cant find tech routes'})
         }
@@ -74,7 +84,7 @@ router.patch('/:id', getTechRoutes, async (req, res) => {
         return res.status(500).json({ message: err.message })
         }
         res.techRoutes = techRoutes
-        next()
+            next()
         }
     
     

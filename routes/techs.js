@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
     const collection =  await  Tech.find()
     // perform actions on the collection object
-     console.log(collection)
+   
      res.json(collection)
     
     })      
@@ -62,7 +62,7 @@ router.patch('/:id', getTech, async (req, res) => {
 
 
          if(i === -1) {   
-           console.log("okokokokokok")  
+         
            listeClients =   tab.concat(listeClients)
            res.tech.listeClients = listeClients           
          }else {    

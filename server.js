@@ -26,5 +26,5 @@ const techsRouteRouter = require('./routes/techsRoutes')
 app.use('/techsRoutes', techsRouteRouter)
 
 
-app.listen(3000, () => console.log('server started'))
+app.listen(3000,() => console.log('server started'))
 
